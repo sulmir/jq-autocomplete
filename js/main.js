@@ -99,12 +99,13 @@ $(document).ready(function () {
             backToTopButton.classList.add("tthidden")
         }
     });
-    backToTopButton.addEventListener("click", function (e) {
-        document.body.scrollIntoView({
-            behavior: "smooth",
+
+    if (undefined !== backToTopButton) {
+        backToTopButton.addEventListener("click", function (e) {
+            document.body.scrollIntoView({
+                behavior: "smooth",
+            });
         });
-    });
-
-
-
+    }
 });
+// alert();
