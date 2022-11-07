@@ -4,30 +4,79 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Untitled</title>
-    <link rel="stylesheet" href="dist/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="dist/assets/fonts/font-awesome.min.css">
+    <title>Jq-autocomplete</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body>
+<body id="bodyAll">
 <section>
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <form>
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user" style="font-size: 24px;"></i></span></div><input class="form-control" type="text">
+        <div class="row pt-2">
+            <div class="col-5 mb-0 pb-0 ml-0 pl-0 mr-0 pr-2">
+                <div class="form-group mb-0 pb-0 ml-0 pl-0 mr-0 pr-0"
+                     style="border-radius: 5px;border: 0.4px solid rgb(206,212,218);border-top-color: rgb(206,212,218);border-right-color: rgb(206,212,218);border-bottom-color: rgb(206,212,218);border-left-color: rgb(206,212,218);">
+                    <div class="input-group mb-0 pb-0 ml-0 pl-0 mr-0 pr-0"
+                         style="border-color: rgb(206,212,218);border-top-color: rgb(206,212,218);border-right-color: rgb(206,212,218);border-bottom-color: rgb(206,212,218);border-left-color: rgb(206,212,218);">
+                        <input type="text" class="d-flex flex-fill" id="searchInput"
+                               style="border-style: none;border-color: rgb(206,212,218);border-top-style: none;border-top-color: rgb(206,212,218);border-right-color: rgb(206,212,218);border-bottom-color: rgb(206,212,218);border-left-color: rgb(206,212,218);"/>
+                        <div id="searchInputIcon" class="input-group-append" style="border-right-color: rgb(33, 37, 41);">
+                            <span class="input-group-text" style="border-width: 0px;">
+                                <i class="fa fa-bank" style="font-size: 24px;"></i>
+                            </span>
+                            <span id="searchTextRefresh" class="input-group-text" style="cursor:pointer;border-width: 0px;">
+                                <i class="fa fa-chevron-circle-down" style="font-size: 24px;"></i>
+                            </span>
                         </div>
                     </div>
-                </form>
+                </div>
+            </div>
+            <div class="col-5 col-xl-5 mb-0 pb-0 ml-0 pl-0 mr-0 pr-2">
+                <div class="form-group mb-0 pb-0 ml-0 pl-0 mr-0 pr-0"
+                     style="border-radius: 5px;border: 0.4px solid rgb(206,212,218);border-top-color: rgb(206,212,218);border-right-color: rgb(206,212,218);border-bottom-color: rgb(206,212,218);border-left-color: rgb(206,212,218);">
+                    <div class="input-group mb-0 pb-0 ml-0 pl-0 mr-0 pr-0"
+                         style="border-color: rgb(206,212,218);border-top-color: rgb(206,212,218);border-right-color: rgb(206,212,218);border-bottom-color: rgb(206,212,218);border-left-color: rgb(206,212,218);">
+                        <input type="text" class="d-flex flex-fill" id="reasonInput"
+                               style="border-style: none;border-color: rgb(206,212,218);border-top-style: none;border-top-color: rgb(206,212,218);border-right-color: rgb(206,212,218);border-bottom-color: rgb(206,212,218);border-left-color: rgb(206,212,218);"/>
+                        <div class="input-group-append" style="border-right-color: rgb(33, 37, 41);"><span
+                                class="input-group-text" style="border-width: 0px;"><i class="fa fa-commenting-o"
+                                                                                       style="font-size: 24px;"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 col-xl-2 mb-0 pb-0 ml-0 pl-0 mr-0 pr-2">
+                <div class="form-group mb-0 pb-0 ml-0 pl-0 mr-0 pr-0"
+                     style="border-radius: 5px;border: 0.4px solid rgb(206,212,218);border-top-color: rgb(206,212,218);border-right-color: rgb(206,212,218);border-bottom-color: rgb(206,212,218);border-left-color: rgb(206,212,218);">
+                    <div class="input-group mb-0 pb-0 ml-0 pl-0 mr-0 pr-0"
+                         style="border-color: rgb(206,212,218);border-top-color: rgb(206,212,218);border-right-color: rgb(206,212,218);border-bottom-color: rgb(206,212,218);border-left-color: rgb(206,212,218);">
+                        <input value="4" type="text" class="d-flex flex-fill" id="timeInput"
+                               style="border-style: none;border-color: rgb(206,212,218);border-top-style: none;border-top-color: rgb(206,212,218);border-right-color: rgb(206,212,218);border-bottom-color: rgb(206,212,218);border-left-color: rgb(206,212,218);width: 116px;"/>
+                        <div class="input-group-append" style="cursor:pointer;border-right-color: rgb(33, 37, 41);"><span
+                                class="input-group-text" style="border-width: 0px;"><i class="fa fa-hourglass-1"
+                                                                                       style="font-size: 24px;"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="searchResultListContainer" style="width: inherit;" class="row pt-0 d-inline-flex searchResult">
+            <div class="col-5 mt-0 mb-0 pb-0 ml-0 pl-0 mr-0 searchResultHide" id="resRowsList"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row pt-2">
+            <div class="col-12 mb-0 pb-0 ml-0 pl-0 mr-0 pr-2">
+                <p class="text-left">
+                    text
+                </p>
             </div>
         </div>
     </div>
 </section>
-<script src="dist/assets/js/jquery.min.js"></script>
-<script src="dist/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 

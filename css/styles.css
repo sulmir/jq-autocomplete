@@ -1,0 +1,14 @@
+div.searchResult {
+    position: absolute;
+    margin-top: 0px;
+    background-color: white;
+    z-index: 1000;
+}
+
+.searchResultHide {
+    display: none;
+}
+
+.searchResultShow {
+    display: inline-block;
+}
